@@ -30,8 +30,7 @@
 *La empresa también realiza instalaciones de ciertos equipos sin costo,en caso de que el cliente los adquiera con la empresa*
 
 ### **Modelo**
-
-**![][image1]**
+https://drive.google.com/file/d/1LzGZYRZ3EUrZMiOOYYzSlGKtjO1pi__X/view?usp=sharing
 
 ## 
 
