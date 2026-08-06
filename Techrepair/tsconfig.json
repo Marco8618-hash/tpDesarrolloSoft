@@ -1,13 +1,12 @@
 {
   "compilerOptions": {
     /* Estructura de carpetas */
-    "rootDir": "./src",
+    "rootDir": "./",
     "outDir": "./dist",
 
     /* Entorno y Módulos */
     "target": "ES2022",
     "module": "CommonJS",
-    "moduleResolution": "node",
     "esModuleInterop": true,
 
     /* Verificación de tipos */
@@ -15,5 +14,6 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*"]
+  "include": ["./**/*"],
+  "exclude": ["node_modules", "dist"]
 }
