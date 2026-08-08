@@ -1,5 +1,5 @@
 import mysql from 'mysql2/promise';
-import { pool } from './db';
+import { pool } from '../config/db';
 import { Cliente } from '../domain/cliente';
 
 export class ClienteRepository {
