@@ -5,7 +5,9 @@
   "main": "dist/app.js",
   "scripts": {
     "dev": "tsx src/app.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "start": "node dist/app.js",
+    "db:init": "tsx src/config/initDb.ts"
   },
   "keywords": [],
   "author": "",
