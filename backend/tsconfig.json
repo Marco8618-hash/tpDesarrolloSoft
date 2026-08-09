@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     /* Estructura de carpetas */
-    "rootDir": "./",
+    "rootDir": "./src",
     "outDir": "./dist",
 
     /* Entorno y Módulos */
@@ -14,6 +14,6 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["./**/*"],
+  "include": ["./src/**/*"],
   "exclude": ["node_modules", "dist"]
 }

@@ -2,9 +2,9 @@
   "name": "techrepair",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/app.js",
   "scripts": {
-    "dev": "tsx app.ts",
+    "dev": "tsx src/app.ts",
     "build": "tsc"
   },
   "keywords": [],
