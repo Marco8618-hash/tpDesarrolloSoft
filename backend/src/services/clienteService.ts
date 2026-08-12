@@ -4,7 +4,7 @@ import { Cliente } from '../domain/cliente';
 export class ClienteService {
   private repository = new ClienteRepository();
 
-  async getClientePorCuit(cuit: string): Promise<Cliente | null> {
-    return await this.repository.buscarPorCuit(cuit);
+  async getClientePorId(id: number): Promise<Cliente | null> {
+    return await this.repository.findById(id);
   }
 }

@@ -1,18 +1,22 @@
 {
   "compilerOptions": {
-    /* Estructura de carpetas */
+    // Estructura de carpetas 
     "rootDir": "./src",
     "outDir": "./dist",
 
-    /* Entorno y Módulos */
+    // Entorno y Módulos
     "target": "ES2022",
     "module": "CommonJS",
     "esModuleInterop": true,
 
-    /* Verificación de tipos */
+    //Verificación de tipos
     "strict": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+
+    // Decoradores de MikroORM
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   },
   "include": ["./src/**/*"],
   "exclude": ["node_modules", "dist"]

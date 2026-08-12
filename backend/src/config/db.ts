@@ -1,12 +1,16 @@
-import mysql from 'mysql2/promise';
-import { env } from './env';
+import { MikroORM, EntityManager } from '@mikro-orm/mysql';
+import config from './mikro-orm.config';
 
-export const pool = mysql.createPool({
-  host: env.db.host,
-  user: env.db.user,
-  password: env.db.password,
-  database: env.db.name,
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0
-});
+export let orm: MikroORM;
+export let em: EntityManager;
+
+export async function initORM() {
+
+  // Inicializa MikroORM con la configuración del .env
+  orm = await MikroORM.init(config);
+  
+  // pasa la configuracion al entity manager para que la usen los repositorios
+  em = orm.em;
+
+  return orm;
+}

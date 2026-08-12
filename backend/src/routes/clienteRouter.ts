@@ -4,10 +4,10 @@ import { ClienteService } from '../services/clienteService';
 const router = Router();
 const clienteService = new ClienteService();
 
-// GETONE cliente por cuit
-router.get('/:cuit', async (req: Request, res: Response) => {
-  const cuit = req.params.cuit as string;;
-  const cliente = await clienteService.getClientePorCuit(cuit);
+// GETONE cliente por id
+router.get('/:id', async (req: Request, res: Response) => {
+  const id = parseInt(req.params.id as string);
+  const cliente = await clienteService.getClientePorId(id);
 
   if (!cliente) {
     res.status(404).json({ message: 'Cliente no encontrado' });
