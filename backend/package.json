@@ -14,11 +14,14 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@mikro-orm/core": "^7.1.11",
+    "@mikro-orm/mysql": "^7.1.11",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "mysql2": "^3.23.2"
+    "mysql2": "^3.23.3"
   },
   "devDependencies": {
+    "@mikro-orm/cli": "^7.1.11",
     "@types/express": "^5.0.6",
     "@types/node": "^26.1.2",
     "ts-node": "^10.9.2",
