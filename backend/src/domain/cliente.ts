@@ -16,11 +16,11 @@ export class Cliente {
 }
 */
 
-import { Entity, PrimaryKey, Property, InheritanceType } from '@mikro-orm/core';
+import { Entity, PrimaryKey, Property } from '@mikro-orm/decorators/legacy';
 
 @Entity({
   tableName: 'clientes',
-  inheritance: InheritanceType.JOINED,
+  inheritance: 'tpt',
 })
 
 export class Cliente {

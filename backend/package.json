@@ -15,6 +15,7 @@
   "type": "commonjs",
   "dependencies": {
     "@mikro-orm/core": "^7.1.11",
+    "@mikro-orm/decorators": "^7.1.11",
     "@mikro-orm/mysql": "^7.1.11",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
