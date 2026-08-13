@@ -25,13 +25,13 @@ import { Entity, PrimaryKey, Property } from '@mikro-orm/decorators/legacy';
 
 export class Cliente {
   @PrimaryKey({ fieldName: 'idcliente', autoincrement: true })
-  id!: number;
+  idcliente!: number;
 
   @Property({ length: 45, nullable: true })
   cuit!: string;
 
-  constructor(id?: number, cuit?: string) {
-    if (id !== undefined) this.id = id;
+  constructor(idcliente?: number, cuit?: string) {
+    if (idcliente !== undefined) this.idcliente = idcliente;
     if (cuit !== undefined) this.cuit = cuit;
   }
 }

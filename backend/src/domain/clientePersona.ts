@@ -31,8 +31,8 @@ export class ClientePersona extends Cliente {
   @Property({ fieldName: 'apellido', length: 255 })
   apellido!: string;
 
-  constructor(id?: number, cuit?: string, nombre?: string, apellido?: string) {
-    super(id, cuit);
+  constructor(idcliente?: number, cuit?: string, nombre?: string, apellido?: string) {
+    super(idcliente, cuit);
     if (nombre !== undefined) this.nombre = nombre;
     if (apellido !== undefined) this.apellido = apellido;
   }

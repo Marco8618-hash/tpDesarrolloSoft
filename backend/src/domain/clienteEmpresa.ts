@@ -26,8 +26,8 @@ export class ClienteEmpresa extends Cliente {
   @Property({ fieldName: 'razon_social', length: 255 })
   razonSocial!: string;
 
-  constructor(id?: number, cuit?: string, razonSocial?: string) {
-    super(id, cuit);
+  constructor(idcliente?: number, cuit?: string, razonSocial?: string) {
+    super(idcliente, cuit);
     if (razonSocial !== undefined) this.razonSocial = razonSocial;
   }
 }
