@@ -27,11 +27,10 @@ export class Cliente {
   @PrimaryKey({ fieldName: 'idcliente', autoincrement: true })
   idcliente!: number;
 
-  @Property({ length: 45, nullable: true })
+  @Property({ fieldName: 'cuit', length: 45, nullable: true })
   cuit!: string;
 
-  constructor(idcliente?: number, cuit?: string) {
-    if (idcliente !== undefined) this.idcliente = idcliente;
-    if (cuit !== undefined) this.cuit = cuit;
+  constructor(cuit: string) {
+    this.cuit = cuit;
   }
 }

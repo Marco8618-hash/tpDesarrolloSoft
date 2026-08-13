@@ -18,7 +18,7 @@ export class ClientePersona extends Cliente {
 */
 
 import { Cliente } from "./cliente";
-import { Entity, Property } from "@mikro-orm/decorators/legacy";
+import { Entity, Property } from '@mikro-orm/decorators/legacy';
 
 @Entity({
   tableName: 'clientes_persona',
@@ -31,9 +31,9 @@ export class ClientePersona extends Cliente {
   @Property({ fieldName: 'apellido', length: 255 })
   apellido!: string;
 
-  constructor(idcliente?: number, cuit?: string, nombre?: string, apellido?: string) {
-    super(idcliente, cuit);
-    if (nombre !== undefined) this.nombre = nombre;
-    if (apellido !== undefined) this.apellido = apellido;
+  constructor(cuit: string, nombre: string, apellido: string) {
+    super(cuit);
+    this.nombre = nombre;
+    this.apellido = apellido;
   }
 }

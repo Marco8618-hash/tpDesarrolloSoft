@@ -18,7 +18,7 @@ export class Insumo {
 import { Entity, PrimaryKey, Property } from '@mikro-orm/decorators/legacy';
 
 @Entity({
-  tableName: 'insumos',
+    tableName: 'insumos',
 })
 export class Insumo {
     @PrimaryKey({ fieldName: 'idinsumo', autoincrement: true })
@@ -28,9 +28,8 @@ export class Insumo {
     @Property({ fieldName: 'costo', type: 'number' })
     costo!: number;
 
-    constructor(idinsumo?: number, nombre?: string, costo?: number) {
-        if (idinsumo !== undefined) this.idinsumo = idinsumo;
-        if (nombre !== undefined) this.nombre = nombre;
+    constructor(nombre: string, costo?: number) {
+        this.nombre = nombre;
         if (costo !== undefined) this.costo = costo;
     }
 }

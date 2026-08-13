@@ -18,7 +18,7 @@ import { Entity, PrimaryKey, Property } from '@mikro-orm/decorators/legacy';
 
 
 @Entity({
-  tableName: 'estados_reparacion',
+    tableName: 'estados_reparacion',
 })
 export class EstadoReparacion {
     @PrimaryKey({ fieldName: 'idestado', autoincrement: true })
@@ -26,8 +26,7 @@ export class EstadoReparacion {
     @Property({ fieldName: 'estado', length: 255 })
     estado!: string;
 
-    constructor(idestado?: number, estado?: string) {
-        if (idestado !== undefined) this.idestado = idestado;
-        if (estado !== undefined) this.estado = estado;
+    constructor(estado: string) {
+        this.estado = estado;
     }
 }
