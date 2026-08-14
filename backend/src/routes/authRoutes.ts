@@ -1,17 +1,10 @@
-import { Router, Request, Response } from 'express';
+import { Router } from 'express';
+import { register, login, getMe } from '../controllers/authController';
 
 const router = Router();
 
-router.get('/', (req: Request, res: Response) => {
-    res.send('Bienvenido al HOME');
-});
-
-
-
-
-
-
-
-
+router.post('/register', register);
+router.post('/login', login);
+router.get('/me', getMe);
 
 export default router;

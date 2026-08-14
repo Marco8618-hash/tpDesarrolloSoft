@@ -1,15 +1,13 @@
 import { Router } from 'express';
-import { getClientePorId } from '../controllers/clienteController';
+import { getAllClientes, getClientePorId, createClientePersona, createClienteEmpresa, updateCliente, deleteCliente } from '../controllers/clienteController';
 
 const router = Router();
 
-// GETONE cliente por id
+router.get('/', getAllClientes);
 router.get('/:id', getClientePorId);
-
-// FINDALL clientes
-router.get('/', async (req, res) => {
-  res.status(200).json({ message: 'Aquí se devolverían todos los clientes' });
-});
-
+router.post('/persona', createClientePersona);
+router.post('/empresa', createClienteEmpresa);
+router.put('/:id', updateCliente);
+router.delete('/:id', deleteCliente);
 
 export default router;
