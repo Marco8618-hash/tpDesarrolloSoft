@@ -8,3 +8,5 @@ export class ClienteService {
     return await this.repository.findById(id);
   }
 }
+
+export const clienteService = new ClienteService();
