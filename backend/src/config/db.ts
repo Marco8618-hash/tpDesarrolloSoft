@@ -11,7 +11,7 @@ import { Insumo } from '../domain/insumo';
 import { ItemInsumo } from '../domain/itemInsumo';
 import { Factura } from '../domain/factura';
 
-export let orm: MikroORM;
+export let orm: Awaited<ReturnType<typeof MikroORM.init>>;
 
 export async function initORM() {
   orm = await MikroORM.init({
@@ -24,7 +24,7 @@ export async function initORM() {
   });
 
   await orm.schema.ensureDatabase();
-  await orm.schema.updateSchema();
+  await orm.schema.update();
 
   console.log('Base de datos y tablas verificadas/creadas con éxito.');
 
