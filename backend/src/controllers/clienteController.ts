@@ -62,9 +62,14 @@ export const updateCliente = async (req: Request, res: Response) => {
             res.status(400).json({ message: 'El ID no es válido' });
             return;
         }
-        // TODO: implementar con service
+        const datos = req.body;
+        await clienteService.updateClientePorId(id, datos);
         res.status(200).json({ message: `Cliente con ID ${id} actualizado` });
-    } catch (error) {
+    } catch (error: any) {
+        if (error.message?.includes('no encontrado')) {
+            res.status(404).json({ message: error.message });
+            return;
+        }
         res.status(500).json({ message: 'Error interno del servidor' });
     }
 };
