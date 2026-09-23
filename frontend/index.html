@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TechRepair — Servicio profesional de reparación e instalación de equipos electrónicos. Solicitá tu presupuesto online.">
+  <title>TechRepair — Reparación de Equipos</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ====== NAVBAR ====== -->
+  <nav id="navbar" class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">⚙</span> Tech<span class="logo-accent">Repair</span>
+      </a>
+
+      <ul id="nav-links" class="nav-links">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#como-funciona">¿Cómo funciona?</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="btn-login" class="btn btn-outline" onclick="openModal('login')">Iniciar Sesión</button>
+        <button id="btn-register" class="btn btn-primary" onclick="openModal('register')">Registrarse</button>
+      </div>
+
+      <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ====== HERO ====== -->
+  <header id="hero" class="hero">
+    <div class="container hero-content">
+      <h1>Reparamos tus equipos <span class="highlight">de forma rápida y confiable</span></h1>
+      <p class="hero-subtitle">
+        Solicitá un presupuesto online, seguí el estado de tu reparación
+        y recibí atención de técnicos especializados cerca tuyo.
+      </p>
+      <div class="hero-cta">
+        <button class="btn btn-primary btn-lg" onclick="openModal('register')">Solicitar Presupuesto</button>
+        <a href="#como-funciona" class="btn btn-ghost btn-lg">Ver cómo funciona →</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====== SERVICIOS ====== -->
+  <section id="servicios" class="section">
+    <div class="container">
+      <h2 class="section-title">Nuestros Servicios</h2>
+      <p class="section-subtitle">Todo lo que necesitás para mantener tus equipos funcionando.</p>
+
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-icon">🔧</div>
+          <h3>Reparación</h3>
+          <p>Reparamos PCs, notebooks, impresoras, redes y más.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📋</div>
+          <h3>Presupuestos</h3>
+          <p>Presupuesto detallado antes de cualquier intervención.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🛠</div>
+          <h3>Instalación</h3>
+          <p>Instalamos equipos adquiridos con nosotros sin costo.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🛡</div>
+          <h3>Cobertura Mensual</h3>
+          <p>Plan de cobertura mensual con garantía para tus equipos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CÓMO FUNCIONA ====== -->
+  <section id="como-funciona" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">¿Cómo funciona?</h2>
+      <p class="section-subtitle">En 4 simples pasos.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Registrate</h3>
+          <p>Creá tu cuenta como cliente en segundos.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Solicitá</h3>
+          <p>Describí el problema y subí una foto del equipo.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Presupuesto</h3>
+          <p>Un técnico te envía el presupuesto y agendás cita.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>¡Listo!</h3>
+          <p>Equipo reparado. Factura disponible online.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CONTACTO ====== -->
+  <section id="contacto" class="section">
+    <div class="container contact-box">
+      <h2 class="section-title">¿Tenés alguna duda?</h2>
+      <p class="section-subtitle">Escribinos y te respondemos a la brevedad.</p>
+      <a href="mailto:contacto@techrepair.com" class="btn btn-primary btn-lg">contacto@techrepair.com</a>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="footer-brand"><span class="logo-icon">⚙</span> Tech<span class="logo-accent">Repair</span></span>
+      <span class="footer-copy">© 2026 TechRepair. Todos los derechos reservados.</span>
+    </div>
+  </footer>
+
+  <!-- ====== MODAL AUTH ====== -->
+  <div id="auth-modal" class="modal-overlay" onclick="closeModalOutside(event)">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()" aria-label="Cerrar">&times;</button>
+
+      <!-- LOGIN -->
+      <div id="modal-login" class="modal-view">
+        <h2>Iniciar Sesión</h2>
+        <form id="form-login" onsubmit="handleLogin(event)">
+          <label for="login-email">Email</label>
+          <input id="login-email" type="email" placeholder="tu@email.com" required>
+          <label for="login-pass">Contraseña</label>
+          <input id="login-pass" type="password" placeholder="••••••••" required>
+          <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+        </form>
+        <p class="modal-switch">¿No tenés cuenta? <a href="#" onclick="switchModal('register')">Registrate</a></p>
+        <div class="modal-empresa">
+          <a href="#" class="btn btn-outline btn-block" onclick="switchModal('register-empresa')">Ingresar como Empresa</a>
+        </div>
+      </div>
+
+      <!-- REGISTER PERSONA -->
+      <div id="modal-register" class="modal-view hidden">
+        <h2>Crear Cuenta</h2>
+        <form id="form-register" onsubmit="handleRegister(event)">
+          <label for="reg-name">Nombre completo</label>
+          <input id="reg-name" type="text" placeholder="Juan Pérez" required>
+          <label for="reg-email">Email</label>
+          <input id="reg-email" type="email" placeholder="tu@email.com" required>
+          <label for="reg-pass">Contraseña</label>
+          <input id="reg-pass" type="password" placeholder="••••••••" required>
+          <label for="reg-pass-confirm">Confirmar contraseña</label>
+          <input id="reg-pass-confirm" type="password" placeholder="••••••••" required>
+          <button type="submit" class="btn btn-primary btn-block">Registrarse</button>
+        </form>
+        <p class="modal-switch">¿Ya tenés cuenta? <a href="#" onclick="switchModal('login')">Iniciá sesión</a></p>
+        <div class="modal-empresa">
+          <a href="#" class="btn btn-outline btn-block" onclick="switchModal('register-empresa')">Registrar una Empresa</a>
+        </div>
+      </div>
+
+      <!-- REGISTER EMPRESA -->
+      <div id="modal-register-empresa" class="modal-view hidden">
+        <h2>Registrar Empresa</h2>
+        <form id="form-register-empresa" onsubmit="handleRegisterEmpresa(event)">
+          <label for="reg-emp-razon">Razón social</label>
+          <input id="reg-emp-razon" type="text" placeholder="Empresa S.A." required>
+          <label for="reg-emp-cuit">CUIT</label>
+          <input id="reg-emp-cuit" type="text" placeholder="30-12345678-9" required>
+          <label for="reg-emp-email">Email corporativo</label>
+          <input id="reg-emp-email" type="email" placeholder="contacto@empresa.com" required>
+          <label for="reg-emp-pass">Contraseña</label>
+          <input id="reg-emp-pass" type="password" placeholder="••••••••" required>
+          <label for="reg-emp-pass-confirm">Confirmar contraseña</label>
+          <input id="reg-emp-pass-confirm" type="password" placeholder="••••••••" required>
+          <button type="submit" class="btn btn-primary btn-block">Registrar Empresa</button>
+        </form>
+        <p class="modal-switch">¿Ya tenés cuenta? <a href="#" onclick="switchModal('login')">Iniciá sesión</a></p>
+        <div class="modal-empresa">
+          <a href="#" class="btn btn-outline btn-block" onclick="switchModal('register')">Registrarse como Persona</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
