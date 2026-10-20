@@ -4,16 +4,29 @@ import { Cliente } from '../domain/cliente';
 export class ClienteService {
   private repository = new ClienteRepository();
 
-  async getClientePorId(id: number): Promise<Cliente | null> {
-    return await this.repository.findById(id);
+  async getAll(): Promise<Cliente[]> {
+    return await this.repository.findAll();
   }
 
-  async updateClientePorId(id: number, datos: Partial<Cliente>): Promise<void> {
-    const clienteExistente = await this.repository.findById(id);
-    if (!clienteExistente) {
-      throw new Error(`Cliente con id ${id} no encontrado`);
+  async getById(id: number): Promise<Cliente> {
+    const cliente = await this.repository.findById(id);
+    if (!cliente) {
+      throw new Error(`Cliente con id ${id} no encontrado o dado de baja`);
     }
-    await this.repository.updateCliente(clienteExistente, datos);
+    return cliente;
+  }
+
+  async getByCuit(cuit: string): Promise<Cliente | null> {
+    return await this.repository.findByCuit(cuit);
+  }
+
+  // Baja lógica: valida que no esté ya dado de baja antes de proceder
+  async delete(id: number): Promise<void> {
+    const cliente = await this.repository.findById(id);
+    if (!cliente) {
+      throw new Error(`Cliente con id ${id} no encontrado o ya está dado de baja`);
+    }
+    await this.repository.delete(cliente);
   }
 }
 

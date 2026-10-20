@@ -21,9 +21,9 @@ import { Entity, PrimaryKey, Property } from '@mikro-orm/decorators/legacy';
     tableName: 'insumos',
 })
 export class Insumo {
-    @PrimaryKey({ fieldName: 'idinsumo', autoincrement: true })
+    @PrimaryKey({ fieldName: 'idinsumo', autoincrement: true, type: 'number' })
     idinsumo!: number;
-    @Property({ fieldName: 'nombre', length: 255 })
+    @Property({ fieldName: 'nombre', length: 255, type: 'string' })
     nombre!: string;
     @Property({ fieldName: 'costo', type: 'number' })
     costo!: number;

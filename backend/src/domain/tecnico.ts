@@ -7,16 +7,16 @@ import { Ubicacion } from './ubicacion';
   tableName: 'tecnicos',
 })
 export class Tecnico {
-  @PrimaryKey({ fieldName: 'idtecnico', autoincrement: true })
+  @PrimaryKey({ fieldName: 'idtecnico', autoincrement: true, type: 'number' })
   idtecnico!: number;
 
-  @Property({ fieldName: 'cuit', length: 45, nullable: true })
+  @Property({ fieldName: 'cuit', length: 45, nullable: true, type: 'string' })
   cuit!: string;
 
-  @Property({ fieldName: 'nombre', length: 255, nullable: true })
+  @Property({ fieldName: 'nombre', length: 255, nullable: true, type: 'string' })
   nombre!: string;
 
-  @Property({ fieldName: 'apellido', length: 255, nullable: true })
+  @Property({ fieldName: 'apellido', length: 255, nullable: true, type: 'string' })
   apellido!: string;
 
   @ManyToOne(() => Ubicacion, { fieldName: 'idubicacion', nullable: true })

@@ -7,13 +7,13 @@ import { Reparacion } from './reparacion';
   tableName: 'facturas',
 })
 export class Factura {
-  @PrimaryKey({ fieldName: 'idfactura', autoincrement: true })
+  @PrimaryKey({ fieldName: 'idfactura', autoincrement: true, type: 'number' })
   idfactura!: number;
 
-  @Property({ fieldName: 'fecha' })
+  @Property({ fieldName: 'fecha', type: 'date' })
   fecha!: Date;
 
-  @Property({ fieldName: 'valor', precision: 10, scale: 2 })
+  @Property({ fieldName: 'valor', precision: 10, scale: 2, type: 'number' })
   valor!: number;
 
   @ManyToOne(() => Reparacion, { fieldName: 'idreparacion' })

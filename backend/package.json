@@ -16,13 +16,18 @@
     "@mikro-orm/core": "^7.1.11",
     "@mikro-orm/decorators": "^7.1.11",
     "@mikro-orm/mysql": "^7.1.11",
+    "bcryptjs": "^3.0.3",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "mysql2": "^3.23.3"
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.23.3",
+    "reflect-metadata": "^0.2.2"
   },
   "devDependencies": {
     "@mikro-orm/cli": "^7.1.11",
+    "@types/bcryptjs": "^2.4.6",
     "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^26.1.2",
     "ts-node": "^10.9.2",
     "tsx": "^4.23.9",

@@ -25,10 +25,10 @@ import { Entity, Property } from '@mikro-orm/decorators/legacy';
 })
 
 export class ClientePersona extends Cliente {
-  @Property({ fieldName: 'nombre', length: 255 })
+  @Property({ fieldName: 'nombre', length: 255, type: 'string' })
   nombre!: string;
 
-  @Property({ fieldName: 'apellido', length: 255 })
+  @Property({ fieldName: 'apellido', length: 255, type: 'string' })
   apellido!: string;
 
   constructor(cuit: string, nombre: string, apellido: string) {

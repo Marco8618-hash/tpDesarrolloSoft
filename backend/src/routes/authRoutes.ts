@@ -1,10 +1,9 @@
 import { Router } from 'express';
-import { register, login, getMe } from '../controllers/authController';
+import { login } from '../controllers/authController';
 
 const router = Router();
 
-router.post('/register', register);
+// LOGIN - Autenticación y obtención de token JWT
 router.post('/login', login);
-router.get('/me', getMe);
 
 export default router;

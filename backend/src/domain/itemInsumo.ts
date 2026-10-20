@@ -8,7 +8,7 @@ import { Reparacion } from './reparacion';
   tableName: 'item_insumos',
 })
 export class ItemInsumo {
-  @PrimaryKey({ fieldName: 'iditeminsumo', autoincrement: true })
+  @PrimaryKey({ fieldName: 'iditeminsumo', autoincrement: true, type: 'number' })
   iditeminsumo!: number;
 
   @ManyToOne(() => Reparacion, { fieldName: 'idreparacion' })
@@ -17,7 +17,7 @@ export class ItemInsumo {
   @ManyToOne(() => Insumo, { fieldName: 'idinsumo' })
   insumo!: Insumo;
 
-  @Property({ fieldName: 'cantidad' })
+  @Property({ fieldName: 'cantidad', type: 'number' })
   cantidad!: number;
 
   constructor(reparacion: Reparacion, insumo: Insumo, cantidad: number) {

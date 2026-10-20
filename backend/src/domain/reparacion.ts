@@ -56,10 +56,10 @@ import { EstadoReparacion } from './estadoReparacion';
   tableName: 'reparaciones',
 })
 export class Reparacion {
-  @PrimaryKey({ fieldName: 'idreparacion', autoincrement: true })
+  @PrimaryKey({ fieldName: 'idreparacion', autoincrement: true, type: 'number' })
   idreparacion!: number;
 
-  @Property({ fieldName: 'descripcion', length: 255, nullable: true })
+  @Property({ fieldName: 'descripcion', length: 255, nullable: true, type: 'string' })
   descripcion!: string;
 
   @ManyToOne(() => Cliente, { fieldName: 'idcliente', nullable: true })

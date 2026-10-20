@@ -23,7 +23,7 @@ import { Entity, Property } from '@mikro-orm/decorators/legacy';
 })
 
 export class ClienteEmpresa extends Cliente {
-  @Property({ fieldName: 'razon_social', length: 255 })
+  @Property({ fieldName: 'razon_social', length: 255, type: 'string' })
   razonSocial!: string;
 
   constructor(cuit: string, razonSocial: string) {

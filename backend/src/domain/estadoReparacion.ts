@@ -21,9 +21,9 @@ import { Entity, PrimaryKey, Property } from '@mikro-orm/decorators/legacy';
     tableName: 'estados_reparacion',
 })
 export class EstadoReparacion {
-    @PrimaryKey({ fieldName: 'idestado', autoincrement: true })
+    @PrimaryKey({ fieldName: 'idestado', autoincrement: true, type: 'number' })
     idestado!: number;
-    @Property({ fieldName: 'estado', length: 255 })
+    @Property({ fieldName: 'estado', length: 255, type: 'string' })
     estado!: string;
 
     constructor(estado: string) {

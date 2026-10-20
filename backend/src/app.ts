@@ -1,6 +1,9 @@
+import 'reflect-metadata';
+
 console.log("aca arranca el server")
 
 import express from 'express';
+import path from 'path';
 import { RequestContext } from '@mikro-orm/core';
 import { initORM, orm } from './config/db';
 import router from './routes/indexRoutes';
@@ -16,6 +19,15 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/v1/', router);
+
+// Servir archivos estáticos del frontend (HTML, CSS, JS, imágenes)
+const frontendPath = path.join(__dirname, '..', '..', 'frontend');
+app.use(express.static(frontendPath));
+
+// Cualquier ruta no definida devuelve el index.html (Express 5 syntax)
+app.get('{*path}', (req, res) => {
+  res.sendFile(path.join(frontendPath, 'index.html'));
+});
 
 
 // FUNCION DE ARRANQUE
