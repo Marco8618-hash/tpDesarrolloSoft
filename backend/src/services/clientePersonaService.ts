@@ -17,7 +17,7 @@ export class ClientePersonaService {
     return cliente;
   }
 
-  async create(datos: { cuit: string; nombre: string; apellido: string; password?: string }): Promise<ClientePersona> {
+  async create(datos: { cuit: string; nombre: string; apellido: string; password: string }): Promise<ClientePersona> {
     // Validaciones de negocio
     if (!datos.cuit || datos.cuit.trim() === '') {
       throw new Error('El CUIT es obligatorio');

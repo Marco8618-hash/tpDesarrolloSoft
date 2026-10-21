@@ -5,8 +5,10 @@ console.log("aca arranca el server")
 import express from 'express';
 import path from 'path';
 import { RequestContext } from '@mikro-orm/core';
+import swaggerUi from 'swagger-ui-express';
 import { initORM, orm } from './config/db';
 import router from './routes/indexRoutes';
+import { swaggerSpec } from './config/swagger';
 
 const app = express();
 const PORT = 3000;
@@ -19,6 +21,9 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/v1/', router);
+
+// Documentación interactiva Swagger / OpenAPI
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Servir archivos estáticos del frontend (HTML, CSS, JS, imágenes)
 const frontendPath = path.join(__dirname, '..', '..', 'frontend');
@@ -36,6 +41,7 @@ async function start() {
 
   app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
+    console.log(`Documentación Swagger disponible en http://localhost:${PORT}/api-docs`);
   });
 }
 

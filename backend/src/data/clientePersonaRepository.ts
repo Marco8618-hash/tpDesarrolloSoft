@@ -15,11 +15,9 @@ export class ClientePersonaRepository {
     return await orm.em.findOne(ClientePersona, { cuit });
   }
 
-  async create(datos: { cuit: string; nombre: string; apellido: string; password?: string }): Promise<ClientePersona> {
+  async create(datos: { cuit: string; nombre: string; apellido: string; password: string }): Promise<ClientePersona> {
     const cliente = new ClientePersona(datos.cuit, datos.nombre, datos.apellido);
-    if (datos.password) {
-      cliente.password = datos.password;
-    }
+    cliente.password = datos.password;
     orm.em.persist(cliente);
     await orm.em.flush();
     return cliente;

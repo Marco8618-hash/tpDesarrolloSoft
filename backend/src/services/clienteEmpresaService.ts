@@ -17,7 +17,7 @@ export class ClienteEmpresaService {
     return cliente;
   }
 
-  async create(datos: { cuit: string; razonSocial: string; password?: string }): Promise<ClienteEmpresa> {
+  async create(datos: { cuit: string; razonSocial: string; password: string }): Promise<ClienteEmpresa> {
     // Validaciones de negocio
     if (!datos.cuit || datos.cuit.trim() === '') {
       throw new Error('El CUIT es obligatorio');

@@ -34,6 +34,11 @@ const formatCliente = (cliente: any) => {
     return resto;
 };
 
+// Helper para verificar autorización: un cliente solo puede acceder o modificar sus propios datos
+const esMismoCliente = (req: Request, id: number): boolean => {
+    return req.user?.id === id;
+};
+
 // PERFIL - Obtener los datos del cliente autenticado a partir de req.user (provisto por authMiddleware)
 export const getPerfil = async (req: Request, res: Response) => {
     try {
@@ -49,42 +54,32 @@ export const getPerfil = async (req: Request, res: Response) => {
     }
 };
 
-// GETALL - Listar todos los clientes (polimórfico: personas y empresas)
+// GETALL - Listar todos los clientes (Solo accesible por administradores)
 export const getAllClientes = async (_req: Request, res: Response) => {
-    try {
-        const clientes = await clienteService.getAll();
-        res.status(200).json(clientes.map(formatCliente));
-    } catch (error) {
-        handleError(res, error);
-    }
+    res.status(403).json({ message: 'No tienes permiso para ver la lista de otros clientes' });
 };
 
-// GETALL - Listar solo clientes personas
+// GETALL - Listar solo clientes personas (Solo accesible por administradores)
 export const getAllPersonas = async (_req: Request, res: Response) => {
-    try {
-        const personas = await clientePersonaService.getAll();
-        res.status(200).json(personas.map(formatCliente));
-    } catch (error) {
-        handleError(res, error);
-    }
+    res.status(403).json({ message: 'No tienes permiso para ver la lista de otros clientes' });
 };
 
-// GETALL - Listar solo clientes empresas
+// GETALL - Listar solo clientes empresas (Solo accesible por administradores)
 export const getAllEmpresas = async (_req: Request, res: Response) => {
-    try {
-        const empresas = await clienteEmpresaService.getAll();
-        res.status(200).json(empresas.map(formatCliente));
-    } catch (error) {
-        handleError(res, error);
-    }
+    res.status(403).json({ message: 'No tienes permiso para ver la lista de otros clientes' });
 };
 
-// GETONE - Obtener un cliente por ID (sea persona o empresa)
+// GETONE - Obtener un cliente por ID (sea persona o empresa, solo propio)
 export const getClientePorId = async (req: Request, res: Response) => {
     try {
         const id = parseInt(req.params.id as string, 10);
         if (isNaN(id)) {
             res.status(400).json({ message: 'El ID no es válido' });
+            return;
+        }
+
+        if (!esMismoCliente(req, id)) {
+            res.status(403).json({ message: 'No tienes permiso para ver los datos de otro cliente' });
             return;
         }
 
@@ -95,10 +90,14 @@ export const getClientePorId = async (req: Request, res: Response) => {
     }
 };
 
-// CREATE - Registrar o dar de alta un cliente persona (con contraseña opcional)
+// CREATE - Registrar o dar de alta un cliente persona (con contraseña obligatoria)
 export const createClientePersona = async (req: Request, res: Response) => {
     try {
         const { cuit, nombre, apellido, password } = req.body;
+        if (!password || typeof password !== 'string' || password.trim() === '') {
+            res.status(400).json({ message: 'La contraseña es obligatoria' });
+            return;
+        }
         const nuevoCliente = await clientePersonaService.create({ cuit, nombre, apellido, password });
         res.status(201).json({
             message: 'Cliente persona creado exitosamente',
@@ -109,10 +108,14 @@ export const createClientePersona = async (req: Request, res: Response) => {
     }
 };
 
-// CREATE - Registrar o dar de alta un cliente empresa (con contraseña opcional)
+// CREATE - Registrar o dar de alta un cliente empresa (con contraseña obligatoria)
 export const createClienteEmpresa = async (req: Request, res: Response) => {
     try {
         const { cuit, razonSocial, password } = req.body;
+        if (!password || typeof password !== 'string' || password.trim() === '') {
+            res.status(400).json({ message: 'La contraseña es obligatoria' });
+            return;
+        }
         const nuevoCliente = await clienteEmpresaService.create({ cuit, razonSocial, password });
         res.status(201).json({
             message: 'Cliente empresa creado exitosamente',
